@@ -25,6 +25,10 @@ validate(control:AbstractControl):{[key:string]:any}|null{
 
 }
 
+
+
+
+
 @Directive({
     selector:'[passwordStrength]',
     providers: [{

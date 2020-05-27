@@ -43,6 +43,8 @@ export class EditprofileComponent implements OnInit {
   constructor(private transferService: DataService, private http: HttpClient,
     private router: Router) {
     this.email_Id = transferService.getData();
+    console.log(this.email_Id);
+    
   }
 
   ngOnInit(): void {

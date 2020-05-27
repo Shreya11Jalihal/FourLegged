@@ -313,3 +313,20 @@ input[type=checkbox]
     opacity: 1;
    transform: scale(1.03);
 }
+
+
+::-webkit-input-placeholder {
+    color: #888;
+  }
+  
+  :-moz-placeholder {
+    color: #888;
+  }
+  
+  ::-moz-placeholder {
+    color: #888;
+  }
+  
+  :-ms-input-placeholder {
+    color: #888;
+  }
