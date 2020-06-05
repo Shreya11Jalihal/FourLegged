@@ -6,6 +6,7 @@ import { EditprofileComponent } from './components/editprofile.component';
 import { ActivitiesComponent } from './components/activities.component';
 import { LoginComponent } from './components/login.component';
 import { componentFactoryName } from '@angular/compiler';
+import { AuthGuard } from '../../core/guards/auth.guard';
 
 const routes: Routes = [
     {
@@ -18,11 +19,13 @@ const routes: Routes = [
      },
      {
        path:'editProfile',
-       component:EditprofileComponent
+       component:EditprofileComponent,
+       canActivate :[AuthGuard]
      },
      {
        path:'activities',
-       component:ActivitiesComponent
+       component:ActivitiesComponent,
+       canActivate :[AuthGuard]
      },
      {
         path:'signUp',

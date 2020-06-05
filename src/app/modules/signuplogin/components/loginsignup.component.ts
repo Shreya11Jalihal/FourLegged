@@ -21,7 +21,7 @@ export class LoginsignupComponent implements OnInit {
   signUpForm: FormGroup;
   toggle1: boolean = false;
   toggle2: boolean = false;
- 
+  toggle3: boolean = false;
 
   constructor(private router: Router, private _route: ActivatedRoute, private transferService: DataService,
     private dialog: MatDialog, private httpService: HttpService, private formBuilder: FormBuilder,
@@ -142,6 +142,23 @@ export class LoginsignupComponent implements OnInit {
         }
       }
     });
+
+  }
+
+
+  public showPassword(input_password, num) {
+    if (input_password.type == 'password') {
+      input_password.type = 'text';
+    } else {
+      input_password.type = 'password';
+    }
+    if (num == 1) {
+      this.toggle1 = !this.toggle1;
+    } else if (num == 2) {
+      this.toggle2 = !this.toggle2;
+    } else {
+      this.toggle3 = !this.toggle3;
+    }
 
   }
 

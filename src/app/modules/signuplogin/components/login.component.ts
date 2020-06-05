@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { HttpHeaders,HttpParams } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute ,NavigationEnd } from '@angular/router';
 import { DataService } from '../../../shared/services/data-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ForgotPasswordDialog } from './forgotpassword.component';
@@ -26,9 +26,16 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private router: Router, private _route: ActivatedRoute, private transferService: DataService,
-    private dialog: MatDialog, private httpService: HttpService, private formBuilder: FormBuilder) {
+    private dialog: MatDialog, private httpService: HttpService, private formBuilder: FormBuilder,
+    private renderer:Renderer2) {
 
-    //transferService.setData(this.loginForm.value.emailId);
+      this.router.events.subscribe((e) => {
+        if (e instanceof NavigationEnd) {
+          this.renderer.setStyle(document.body, 'background-image', ' url("../../../assets/signup.jpg")');
+        }
+      });
+
+      
   }
 
   ngOnInit(): void {
@@ -40,6 +47,7 @@ export class LoginComponent implements OnInit {
     this.loginForm.valueChanges.subscribe((data) => {
       this.logValidationErrors(this.loginForm);
     });
+    
   }
 
 

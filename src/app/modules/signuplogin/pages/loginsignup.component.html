@@ -52,11 +52,8 @@
                <input  type="password" tabindex="2" #displayPassword id="passwordr" class="form-control" name="passwordr"
                   placeholder="Your password" formControlName="password" (blur)="logValidationErrors(signUpForm)"
                   [ngClass]="{'is-invalid': signUpFormErrors.password }" required />
-               <div class="input-group-append" (click)="utility_Service.showPassword(displayPassword, 1)">
-                  <span class="input-group-text"> <i [ngClass]="toggle1 ? 'fa fa-eye' : 'fa fa-eye-slash'"
-                        aria-hidden="true"></i>
-                  </span>
-               </div>
+               <i class="myClass" (click)="showPassword(displayPassword, 1)"
+               [ngClass]="toggle1 ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
                <small *ngIf="signUpFormErrors.password" class="invalid-feedback">
                   {{signUpFormErrors.password}}
                </small>
@@ -74,10 +71,8 @@
                   name="repassword" placeholder="Retype your password" formControlName="confirm_password"
                   [ngClass]="{'is-invalid':signUpFormErrors.confirm_password  || signUpFormErrors.passwordGroup}" (blur)="logValidationErrors(signUpForm)"
                   required />
-               <div class="input-group-append" (click)="utility_Service.showPassword(displayCpassword, 2)">
-                  <span class="input-group-text"> <i [ngClass]="toggle2 ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
-                  </span>
-               </div>
+               <i class="myClass" (click)="showPassword(displayCpassword, 2)"
+               [ngClass]="toggle2 ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
                <small *ngIf="signUpFormErrors.confirm_password || signUpFormErrors.passwordGroup " class="invalid-feedback">
                   {{signUpFormErrors.confirm_password ? signUpFormErrors.confirm_password : signUpFormErrors.passwordGroup}}
                </small>

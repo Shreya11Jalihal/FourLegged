@@ -23,17 +23,14 @@
       <fieldset>
         <div class="form-group">
             <label for="password">Password</label>
-            <div class="input-group">
+            <div class="input-group input-wrapper">    
                 <input type="password" class="form-control"  name="password" #displayPassword
                     (blur)="logValidationErrors(loginForm)" placeholder="Your password"
                     formControlName="password" required tabindex="2"
                     [ngClass]="{'is-invalid': loginFormErrors.password}" />
-                <div  (click)="showPassword(displayPassword, 3)">
-                    <span class="input-group-text"> <i
-                            [ngClass]="toggle3 ? 'fa fa-eye' : 'fa fa-eye-slash'"
-                            aria-hidden="true"></i>
-                    </span>
-                </div>
+                   <i class="myClass" (click)="showPassword(displayPassword, 3)"
+                   [ngClass]="toggle3 ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+
                 <small *ngIf="loginFormErrors.password" class="invalid-feedback">
                     {{loginFormErrors.password}}
                 </small>
