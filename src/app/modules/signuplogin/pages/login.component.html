@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" *ngIf="showLoginForm">
     <form id="contact" [formGroup]="loginForm" novalidate (submit)="login()">
         <div *ngIf="loginError" class="alert alert-danger">
                         {{loginError}}
@@ -56,3 +56,51 @@
      </div>
     </form>
   </div>
+
+
+  <!--forgot password-->
+
+  <div class="container" *ngIf="!showLoginForm">
+
+
+    <form id="contact" [formGroup]="loginForm" novalidate (submit)="sendMail()">
+        <div *ngIf="loginError" class="alert alert-danger">
+                        {{loginError}}
+                    </div>
+      <h2>Forgot Password?</h2>
+      <h4>Please enter your email address and we will send you a password reset mail.</h4>
+      <!--EMAIL FIELD-->
+      <fieldset>
+        <div>
+            <div class="form-group">
+                <label for="name">Email-ID</label>
+                <input type="email" id="emailId" tabindex="2" class="form-control" name="emailId"
+                    (blur)="logValidationErrors(loginForm)" placeholder="Your email-ID"
+                    formControlName="emailId" required [ngClass]="{'is-invalid':loginFormErrors.emailId}" />
+                <small *ngIf="loginFormErrors.emailId" class="invalid-feedback">
+                    {{loginFormErrors.emailId}}
+                </small>
+            </div>
+        </div>
+       
+      </fieldset>
+      <div class="row">
+        <div class="col-sm-6">
+          <fieldset>
+            <button name="submit" type="submit" class="btn btn-info" id="contact-submit" >Send Link</button>
+          </fieldset>
+        </div>
+      </div>
+      <div id="error" *ngIf="message">
+        <p>{{message}}</p>
+      </div>
+
+      <div>
+        
+      <b>  <a routerLink="/login">Cancel</a></b>
+     </div>
+    </form>
+
+  </div>
+
+  

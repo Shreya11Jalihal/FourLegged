@@ -1,10 +1,11 @@
+<div class="container">
 <br />&nbsp;
 <div id="reSendMessage" *ngIf="reSendMessage">
    <i class="fa fa-check-circle"></i> {{reSendMessage}}
 </div>
-<div *ngIf="isHidden">
+<div *ngIf="isHidden" #resetDiv>
    <h2>
-      <p><b>We just sent you a verification code</b></p>
+      <p><b>We just sent you a verification code!!</b></p>
    </h2>
    <p>We just sent a verification code to your email. If you don't see our email in your inbox, check your spam folder
    </p>
@@ -16,31 +17,36 @@
       </div>
    </div>
    <div class="row">
-      <div class="offset-3"></div>
-      <div class="col-md-3">
-         <form name="form" #verificationForm="ngForm" novalidate (submit)="verificationForm.form.valid && verifyCode()">
-            <!--Code-->
-            <div class="form-group">
-               <label for="code"></label>
-               <input [(ngModel)]="code" type="text" id="code" class="form-control" name="code" required
-                  #codeInput="ngModel" [ngClass]="{'is-invalid':verificationForm.submitted && codeInput.invalid}"
-                  placeholder="Enter Code" />
-            </div>
+      
+      <div class="col-md-5">
+         <form name="form" id=contact #verificationForm="ngForm" novalidate (submit)="verificationForm.form.valid && verifyCode()">
+           
+
+            <fieldset>
+                  <div>
+                      <div class="form-group">
+                          
+                          <input type="text" id="code" tabindex="2" class="form-control" name="code" #codeInput
+                          [ngClass]="{'is-invalid':verificationForm.submitted && codeInput.invalid}" placeholder="Enter Code"
+                              required  />
+                          
+                      </div>
+                  </div>
+                 
+                </fieldset>
             <div id="error" *ngIf="message">
                <p>{{message}}</p>
             </div>
             <br />&nbsp;
-            <button type="submit" class="btn btn-info">
-               <i class="fa"></i>
-               <span>Submit</span>
-            </button>
+                  <button name="submit" type="button" class="btn btn-info" id="contact-submit" >Submit</button>
+                  <div style="color:dodgerblue"><b>
+                        Didn't receive the code?</b><button type="submit" class="btn btn-info" (click)="resendCode()">
+                           <span>Resend</span>
+                        </button>
+                     </div>
          </form>
          &nbsp;
-         <div>
-            Didn't receive the code?<button type="submit" class="btn btn-info" (click)="resendCode()">
-               <span>Resend</span>
-            </button>
-         </div>
+         
       </div>
    </div>
 </div>
@@ -113,4 +119,5 @@
          </form>
       </div>
    </div>
+</div>
 </div>

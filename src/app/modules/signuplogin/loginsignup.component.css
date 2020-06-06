@@ -11,7 +11,9 @@ rgba(0, 0, 0, 0.43)), url("../../../assets/signup.jpg");
 
 }
 
-
+#resetDiv h2,p{
+  color:white;
+}
 
 #reSendMessage
 {

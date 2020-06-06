@@ -23,6 +23,9 @@ export class LoginComponent implements OnInit {
   toggle1: boolean = false;
   toggle2: boolean = false;
   toggle3: boolean = false;
+  message:string;
+
+  showLoginForm: boolean = true;
   loginForm: FormGroup;
 
   constructor(private router: Router, private _route: ActivatedRoute, private transferService: DataService,
@@ -73,19 +76,26 @@ export class LoginComponent implements OnInit {
   };
 
   openDialog() {
-    const dialogRef = this.dialog.open(ForgotPasswordDialog, {
-      width: '400px',
-      disableClose: true,
-      data: {},
-      backdropClass: 'backdropBackground'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log('Dialog closed');
-    });
+   this.showLoginForm = false;
   }
 
+  sendMail(){
+    
+    let url=`${environment.Url}/forgotPassword`;
+    this.httpService.post(url,this.loginForm.value.emailId).subscribe(
+      res =>  {
+        this.response = JSON.parse(JSON.stringify(res));
+        this.transferService.setData(this.loginForm.value.emailId);
+        if(this.response.error==null || this.response.error==""){
+          this.router.navigateByUrl('/reset');
+       }
+      else
+        this.message=this.response.error;
+      },
+      err=>{ alert("Sorry an error occured");
+    });
+
+  }
   
   login(): void {
     this.submitted = true;
