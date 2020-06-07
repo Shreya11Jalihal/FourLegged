@@ -79,6 +79,10 @@ export class LoginComponent implements OnInit {
    this.showLoginForm = false;
   }
 
+  cancelForgotPassword(){
+    this.showLoginForm = true;
+  }
+
   sendMail(){
     
     let url=`${environment.Url}/forgotPassword`;
