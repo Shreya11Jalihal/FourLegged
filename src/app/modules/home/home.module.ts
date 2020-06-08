@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent} from './components/home.component';
 
@@ -14,7 +14,8 @@ import { HomeComponent} from './components/home.component';
   ],
   imports: [
     CommonModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [HomeComponent],

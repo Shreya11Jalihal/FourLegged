@@ -1,12 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../../../shared/services/data-service.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ForgotPasswordDialog } from './forgotpassword.component';
 import { HttpService } from '../../../shared/services/http.service';
 import { environment } from '../../../../environments/environment';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UtilityService } from 'src/app/shared/services/utility-service';
 
 @Component({

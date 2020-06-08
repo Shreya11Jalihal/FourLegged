@@ -3,10 +3,9 @@ import { HttpHeaders,HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute ,NavigationEnd } from '@angular/router';
 import { DataService } from '../../../shared/services/data-service.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ForgotPasswordDialog } from './forgotpassword.component';
 import { HttpService } from '../../../shared/services/http.service';
 import { environment } from '../../../../environments/environment';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 
 @Component({
@@ -19,7 +18,6 @@ export class LoginComponent implements OnInit {
   response: any;
   loginError: any;
   submitted=false;
-  authenticated: boolean;
   toggle1: boolean = false;
   toggle2: boolean = false;
   toggle3: boolean = false;

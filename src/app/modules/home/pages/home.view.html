@@ -65,6 +65,30 @@
   <ul class="animals-showcase clearfix">
     <li>
       <figure class="animal-photo">
+        <img src="../../../../assets/whale.jpg" alt="Image 5">
+      </figure>
+    </li>
+    <li>
+      <figure class="animal-photo">
+        <img src="../../../../assets/lion.jpg" alt="Image 6">
+      </figure>
+    </li>
+    <li>
+      <figure class="animal-photo">
+        <img src="../../../../assets/tiger.jpg" alt="Image 7">
+      </figure>
+    </li>
+    <li>
+      <figure class="animal-photo">
+        <img src="../../../../assets/dog1.jpg" alt="Image 8">
+      </figure>
+    </li>
+
+  </ul>
+  <ul class="animals-showcase clearfix">
+    
+    <li>
+      <figure class="animal-photo">
         <img src="../../../../assets/chick.jpg" alt="Image 1">
       </figure>
     </li>
@@ -83,40 +107,22 @@
         <img src="../../../../assets/horse.jpg" alt="Image 4">
       </figure>
     </li>
-  </ul>
-  <ul class="animals-showcase clearfix">
-    <li>
-      <figure class="animal-photo">
-        <img src="../../../../assets/whale.jpg" alt="Image 5">
-      </figure>
-    </li>
-    <li>
-      <figure class="animal-photo">
-        <img src="../../../../assets/zebra1.jpg" alt="Image 6">
-      </figure>
-    </li>
-    <li>
-      <figure class="animal-photo">
-        <img src="../../../../assets/tiger.jpg" alt="Image 7">
-      </figure>
-    </li>
-    <li>
-      <figure class="animal-photo">
-        <img src="../../../../assets/dog1.jpg" alt="Image 8">
-      </figure>
-    </li>
+
   </ul>
 </section>
-<section class="section-form">
+<section class="section-form" >
   <h2>We're happy to hear from you</h2>
   <div class="row">
-    <form method="post" action="a" class="contact-form">
+    <form [formGroup]="contactForm" class="contact-form" (submit)="submitContactForm()" novalidate>
       <div class="row">
         <div class="col span-1-of-3">
           <label for="name">Name</label>
         </div>
         <div class="col span-2-of-3">
-          <input type="text" name="name" id="name" placeholder="Your Name" required>
+          <input type="text" name="name" formControlName="name" tabindex="2" id="name" placeholder="Your Name" [ngClass]="{'is-invalid':contactFormErrors.name}" required>
+          <small *ngIf="contactFormErrors.name" class="invalid-feedback">
+            {{contactFormErrors.name}}
+        </small>
         </div>
       </div>
       <div class="row">
@@ -124,36 +130,51 @@
           <label for="name">Email</label>
         </div>
         <div class="col span-2-of-3">
-          <input type="text" name="name" id="name" btn placeholder="Your Email" required>
+          <input type="email" name="name" id="name" formControlName="emailId" tabindex="2" btn placeholder="Your Email"  [ngClass]="{'is-invalid':contactFormErrors.emailId}" required>
+          <small *ngIf="contactFormErrors.emailId" class="invalid-feedback">
+            {{contactFormErrors.emailId}}
+          </small>
         </div>
       </div>
       <div class="row">
         <div class="col span-1-of-3">
           <label for="find-us">How did you find us?</label>
         </div>
-        <div class="col span-2-of-3">
+        <!-- <div class="col span-2-of-3">
           <select name="find-us" id="find-us">
-            <option value="friends" selected="selected">Friends</option>
+            <option value="friends" selected="selected" formControlName="selected" tabindex="2">Friends</option>
+            <option value="Search">Search Engine</option>
+            <option value="advertisement">Advertisement</option>
+            <option value="other">Other</option>
+          </select>
+        </div> -->
+        <div class="col span-2-of-3">
+          <select name="find-us" id="find-us" formControlName="selected">
+            <option value="friends" selected="selected"  tabindex="2">Friends</option>
             <option value="Search">Search Engine</option>
             <option value="advertisement">Advertisement</option>
             <option value="other">Other</option>
           </select>
         </div>
+
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col span-1-of-3">
           <label>News Letter</label>
         </div>
         <div class="col span-2-of-3">
           <input type="checkbox" name="newsletter" id="news" checked>Yes,Please
         </div>
-      </div>
+      </div> -->
       <div class="row">
         <div class="col span-1-of-3">
           <label for="message">Drop us a line</label>
         </div>
         <div class="col span-2-of-3">
-          <textarea name="message" placeholder="Your message"></textarea>
+          <textarea name="message"  formControlName="message" tabindex="2" placeholder="Your message"  [ngClass]="{'is-invalid':contactFormErrors.message}"></textarea>
+          <small *ngIf="contactFormErrors.message" class="invalid-feedback">
+            {{contactFormErrors.message}}
+          </small>
         </div>
       </div>
       <div class="row">
@@ -161,7 +182,7 @@
           <label>&nbsp;</label>
         </div>
         <div class="col span-2-of-3">
-          <input type="submit" value="Send it!">
+          <input type="submit" class="btn btn-full" type="submit" [disabled]="!contactForm.valid" value="Send it!"/>
         </div>
       </div>
     </form>
