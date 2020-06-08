@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+<<<<<<< HEAD
 import { ReactiveFormsModule } from '@angular/forms';
+=======
 import {RouterModule} from '@angular/router';
+>>>>>>> f2c658c720c05954dd1748300d7c7d593f31e4d8
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent} from './components/home.component';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
@@ -17,9 +20,11 @@ import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
   imports: [
     CommonModule,
     NgbModule,
+<<<<<<< HEAD
     ReactiveFormsModule
+=======
     NgxPageScrollCoreModule,
-§    RouterModule.forRoot(
+    RouterModule.forRoot(
 			[],
 			{
 				// Tell the router to use the hash instead of HTML5 pushstate.
@@ -43,6 +48,7 @@ import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 				scrollPositionRestoration: "enabled"
 			}
 		)
+>>>>>>> f2c658c720c05954dd1748300d7c7d593f31e4d8
   ],
   providers: [],
   bootstrap: [HomeComponent],

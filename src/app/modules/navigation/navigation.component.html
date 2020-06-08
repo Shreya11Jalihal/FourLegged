@@ -5,7 +5,7 @@
                 <a routerLink=''><img src="../../assets/logo.png" class="logo" alt="Logo"></a>
              <ul class="main-nav">
                   <li>
-                      <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/wdwdo">What do we do</a>
+                      <a *ngIf="!loginService.isUserLoggedIn()" fragment="section-a" routerLink=".">What do we do</a>
                   </li>
                   <li>
                       <a  *ngIf="!loginService.isUserLoggedIn()" routerLink="/loginsignup">Join Our Community</a>
