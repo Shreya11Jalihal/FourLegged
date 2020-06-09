@@ -17,9 +17,20 @@
   
   }
 
+  #success
+{
+  color: green;
+  position: absolute;
+  right: 0px;
+  font-weight: 500;
+  
+}
+
 p{
 
-    display: inline-block;
+    font-weight: 500;
+   
+   
 }
 
 *{
@@ -29,6 +40,18 @@ p{
     
 }
 
+#signup{
+    text-decoration: none;
+    color:#e67e22;
+    font-weight: 400;
+}
+
+#signup:hover{
+    text-decoration: none;
+    color:#d35400;
+    font-weight: 400;
+
+}
 .clearfix{zoom:1}
 .clearfix:after
 {

@@ -61,11 +61,11 @@
   </div>
 </section>
 <section class="section-gallery">
-  <h2>Do you want to feature your work here? </h2>
+  <h2>Do you want to feature your work here? <a href="/loginsignup" id="signup">Join Us today!!</a></h2>
   <ul class="animals-showcase clearfix">
     <li>
       <figure class="animal-photo">
-        <img src="../../../../assets/whale.jpg" alt="Image 5">
+        <img src="../../../../assets/dolphin.jpg" alt="Image 5">
       </figure>
     </li>
     <li>
@@ -75,12 +75,12 @@
     </li>
     <li>
       <figure class="animal-photo">
-        <img src="../../../../assets/tiger.jpg" alt="Image 7">
+        <img src="../../../../assets/zebra.jpg" alt="Image 7">
       </figure>
     </li>
     <li>
       <figure class="animal-photo">
-        <img src="../../../../assets/dog1.jpg" alt="Image 8">
+        <img src="../../../../assets/giraffe.jpg" alt="Image 8">
       </figure>
     </li>
 
@@ -111,8 +111,15 @@
   </ul>
 </section>
 <section class="section-form" >
+  
   <h2>We're happy to hear from you</h2>
+  
+  <div class="col span-1-of-2" id="success" *ngIf="success===true">
+    <i class="fa fa-check-circle"></i>{{message}}
+  </div>
+  <br /><br />
   <div class="row">
+    
     <form [formGroup]="contactForm" class="contact-form" (submit)="submitContactForm()" novalidate>
       <div class="row">
         <div class="col span-1-of-3">
@@ -140,14 +147,6 @@
         <div class="col span-1-of-3">
           <label for="find-us">How did you find us?</label>
         </div>
-        <!-- <div class="col span-2-of-3">
-          <select name="find-us" id="find-us">
-            <option value="friends" selected="selected" formControlName="selected" tabindex="2">Friends</option>
-            <option value="Search">Search Engine</option>
-            <option value="advertisement">Advertisement</option>
-            <option value="other">Other</option>
-          </select>
-        </div> -->
         <div class="col span-2-of-3">
           <select name="find-us" id="find-us" formControlName="selected">
             <option value="friends" selected="selected"  tabindex="2">Friends</option>
@@ -158,14 +157,14 @@
         </div>
 
       </div>
-      <!-- <div class="row">
+      <div class="row">
         <div class="col span-1-of-3">
           <label>News Letter</label>
         </div>
         <div class="col span-2-of-3">
-          <input type="checkbox" name="newsletter" id="news" checked>Yes,Please
+          <input type="checkbox" name="newsletter" formControlName="newsletter" checked>Yes,Please
         </div>
-      </div> -->
+      </div> 
       <div class="row">
         <div class="col span-1-of-3">
           <label for="message">Drop us a line</label>

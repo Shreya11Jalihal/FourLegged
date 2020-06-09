@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpService } from '../../../shared/services/http.service';
 import { environment } from '../../../../environments/environment';
 import { Router} from '@angular/router';
+import { getLocaleFirstDayOfWeek } from '@angular/common';
 
 @Component({
   selector: 'em-home',
@@ -12,6 +13,7 @@ import { Router} from '@angular/router';
 export class HomeComponent implements OnInit {
 
   contactForm: FormGroup;
+  success:true;
   response: any;
   message:any;
   constructor(private router: Router, private formbuilder: FormBuilder,private httpService: HttpService) {
@@ -23,6 +25,7 @@ export class HomeComponent implements OnInit {
       name: ['', Validators.required],
       emailId: ['', Validators.required],
       selected: [''],
+      newsletter:[''],
       message: ['', Validators.required]
     });
 
@@ -35,7 +38,6 @@ export class HomeComponent implements OnInit {
   contactFormErrors = {
     'name': '',
     'emailId': '',
-    'password': '',
     'message': ''
 
   };
@@ -47,11 +49,7 @@ export class HomeComponent implements OnInit {
       'required': 'Please enter a valid email address',
 
     },
-    'password':
-    {
-      'required': 'Please enter your password',
-
-    },
+  
     'message':
     {
       'required': 'Please enter your message',
@@ -85,12 +83,15 @@ export class HomeComponent implements OnInit {
 
 
   submitContactForm() :void {
-    let url=`${environment.Url}/submitContactQuery`;
+    let url=`${environment.Url}/api/submitQuery`;
+    console.log(this.contactForm.value);
+    let headers = new Headers();
     this.httpService.post(url,this.contactForm.value).subscribe(
       res =>  {
         this.response = JSON.parse(JSON.stringify(res));
         if(this.response.error==null || this.response.error==""){
-          this.router.navigateByUrl('/reset');
+         this.message="Your query was sent successfully";
+         this.success=true;
        }
       else
         this.message=this.response.error;

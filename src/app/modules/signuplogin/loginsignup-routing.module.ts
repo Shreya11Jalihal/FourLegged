@@ -20,7 +20,7 @@ const routes: Routes = [
      {
        path:'editProfile',
        component:EditprofileComponent,
-       canActivate :[AuthGuard]
+       //canActivate :[AuthGuard]
      },
      {
        path:'activities',

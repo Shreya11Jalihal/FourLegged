@@ -25,23 +25,21 @@ export class LoginsignupComponent implements OnInit {
     private dialog: MatDialog, private httpService: HttpService, private formBuilder: FormBuilder,
     public  utility_Service: UtilityService ) {
 
-      console.log(this.signUpModel.emailId);
       
-      this.transferService.setData(this.signUpModel.emailId);
-    
   }
 
   signupCustomer(): void {
     
     let url = `${environment.Url}/api/signup`;
     this.signUpModel.username=this.signUpForm.value.username;
-    this.signUpModel.emailId=this.signUpForm.value.emailId;
+    this.signUpModel.emailid=this.signUpForm.value.emailId;
     this.signUpModel.password=this.signUpForm.get('passwordGroup').value.password;
     console.log(this.signUpModel);
     this.httpService.post(url, this.signUpModel).subscribe(
       res => {
-        this.transferService.setData(this.signUpModel);
-        this.response = JSON.parse(JSON.stringify(res));
+        console.log(this.signUpForm.value.emailId);
+         this.transferService.setData(this.signUpForm.value.emailId);
+         this.response = JSON.parse(JSON.stringify(res));
         if (this.response.error == null || this.response.error == "")
           this.router.navigateByUrl('/editProfile');
       },
@@ -53,6 +51,7 @@ export class LoginsignupComponent implements OnInit {
   //Reactive form Changes
 
   ngOnInit(): void {
+    
     this.signUpForm = this.formBuilder.group({
       username: ['', Validators.required],
       emailId: ['', Validators.required],
@@ -69,7 +68,7 @@ export class LoginsignupComponent implements OnInit {
       this.logValidationErrors(this.signUpForm);
     });
 
-
+    
 
   }
   signUpErrorMessages = {
@@ -109,7 +108,7 @@ export class LoginsignupComponent implements OnInit {
   {
     username:'',
     password: '',
-    emailId:''
+    emailid:''
   }
 
   signUpFormErrors = {
@@ -165,5 +164,5 @@ export class LoginsignupComponent implements OnInit {
 export interface SignUpModel{
    username: String,
    password: String,
-   emailId : String,
+   emailid : String,
 }

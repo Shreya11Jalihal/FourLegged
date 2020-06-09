@@ -4,9 +4,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatIconModule } from '@angular/material/icon';
-import { HttpService } from '../../../shared/services/http.service';
 import { environment } from '../../../../environments/environment';
+
+
 
 @Component({
   selector: 'app-editprofile',
@@ -43,7 +43,7 @@ export class EditprofileComponent implements OnInit {
   constructor(private transferService: DataService, private http: HttpClient,
     private router: Router) {
     this.email_Id = transferService.getData();
-    console.log(this.email_Id);
+    
     
   }
 
