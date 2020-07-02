@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   success:true;
   response: any;
   message:any;
+  error: any = [];
   constructor(private router: Router, private formbuilder: FormBuilder,private httpService: HttpService) {
 
   }
@@ -96,7 +97,9 @@ export class HomeComponent implements OnInit {
       else
         this.message=this.response.error;
       },
-      err=>{ alert("Sorry an error occured");
+      err=>{ 
+        this.error=err;
+        alert(this.error);
     });
     
 

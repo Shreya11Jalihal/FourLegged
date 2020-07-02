@@ -5,7 +5,6 @@ import { LoginsignupComponent } from "./components/loginsignup.component";
 import { EditprofileComponent } from './components/editprofile.component';
 import { ActivitiesComponent } from './components/activities.component';
 import { LoginComponent } from './components/login.component';
-import { componentFactoryName } from '@angular/compiler';
 import { AuthGuard } from '../../core/guards/auth.guard';
 
 const routes: Routes = [

@@ -37,14 +37,14 @@ export class LoginsignupComponent implements OnInit {
     console.log(this.signUpModel);
     this.httpService.post(url, this.signUpModel).subscribe(
       res => {
-        console.log(this.signUpForm.value.emailId);
+       //console.log(this.signUpForm.value.emailId);
          this.transferService.setData(this.signUpForm.value.emailId);
          this.response = JSON.parse(JSON.stringify(res));
         if (this.response.error == null || this.response.error == "")
           this.router.navigateByUrl('/editProfile');
       },
       err => {
-        alert("Sorry an error occured");
+        alert("err");
       });
   }
 

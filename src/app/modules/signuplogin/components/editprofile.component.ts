@@ -81,7 +81,7 @@ export class EditprofileComponent implements OnInit {
         this.router.navigateByUrl('/activities');
       },
       err => {
-        alert("Sorry an error occured");
+        alert(err);
       });
   }
   add(event: MatChipInputEvent): void {
